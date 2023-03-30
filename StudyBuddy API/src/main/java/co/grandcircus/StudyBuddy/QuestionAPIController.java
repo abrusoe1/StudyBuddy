@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.view.RedirectView;
 
 @RestController
 @CrossOrigin
@@ -25,14 +26,14 @@ public class QuestionAPIController {
 	@Autowired
 	private StudyBuddyRepository repo;
 	
-	@RequestMapping("/")
-	public String home() {
-		return "redirect:questions";
+	@GetMapping("/")
+	public RedirectView home() {
+		return new RedirectView ("questions");
 	}
 	
 	// C(R)UD -- Read All
 	@GetMapping("/questions")
-	public List<StudyBuddy> readAll(@RequestParam String question) {
+	public List<StudyBuddy> readAll() {
 		return repo.findAll();
 	}
 	

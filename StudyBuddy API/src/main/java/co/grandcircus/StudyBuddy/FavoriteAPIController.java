@@ -27,12 +27,13 @@ public class FavoriteAPIController {
 	
 //	@RequestMapping("/")
 //	public String home() {
-//		return "redirect:favorites";
+
+//		return "redirect:/favorites";
 //	}
-	
+//	
 	// C(R)UD -- Read All
 	@GetMapping("/favorites")
-	public List<StudyBuddy> readAll(@RequestParam String question) {
+	public List<StudyBuddy> readAll() {
 		return repository.findAll();
 	}
 	

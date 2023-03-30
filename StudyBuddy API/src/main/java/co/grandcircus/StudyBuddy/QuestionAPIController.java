@@ -27,12 +27,12 @@ public class QuestionAPIController {
 	
 	@RequestMapping("/")
 	public String home() {
-		return "redirect:questions";
+		return "redirect:/questions";
 	}
 	
 	// C(R)UD -- Read All
 	@GetMapping("/questions")
-	public List<StudyBuddy> readAll(@RequestParam String question) {
+	public List<StudyBuddy> readAll() {
 		return repo.findAll();
 	}
 	

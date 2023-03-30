@@ -27,7 +27,6 @@ public class FavoriteAPIController {
 	
 //	@RequestMapping("/")
 //	public String home() {
-
 //		return "redirect:/favorites";
 //	}
 //	

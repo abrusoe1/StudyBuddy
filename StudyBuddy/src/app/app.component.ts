@@ -7,7 +7,7 @@ import { StudyBuddyService } from './study-buddy.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'restaurantFrontend';
+  title = 'StudyBuddy';
   constructor(private StudyBuddyAPI:StudyBuddyService){
 
     this.StudyBuddyAPI.getAllQuestions().subscribe(

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { StudyBuddyService } from './study-buddy.service';
 
 @Component({
   selector: 'app-root',
@@ -7,7 +8,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'restaurantFrontend';
-  constructor(private StudyBuddyAPI:StudyBuddyService){  //something is wrong here
+  constructor(private StudyBuddyAPI:StudyBuddyService){
 
     this.StudyBuddyAPI.getAllQuestions().subscribe(
       (result)=>{

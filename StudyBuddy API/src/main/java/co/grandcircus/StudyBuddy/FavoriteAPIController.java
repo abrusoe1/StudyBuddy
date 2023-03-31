@@ -30,6 +30,7 @@ public class FavoriteAPIController {
 //		return "redirect:/favorites";
 //	}
 //	
+
 	// C(R)UD -- Read All
 	@GetMapping("/favorites")
 	public List<StudyBuddy> readAll() {

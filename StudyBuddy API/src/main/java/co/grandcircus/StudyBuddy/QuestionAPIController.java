@@ -52,14 +52,14 @@ public class QuestionAPIController {
 	}
 	
 	//CRU(D) -- Delete
-	@DeleteMapping("/orders/{id}")
+	@DeleteMapping("/questions/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void delete(@PathVariable("id") Long id) {
 		repo.deleteById(id);
 	}
 	
 	//CR(U)D -- Update
-	@PutMapping("/orders/{id}")
+	@PutMapping("/questions/{id}")
 	public StudyBuddy update(@PathVariable("id") Long id, @RequestBody StudyBuddy sb) {
 		sb.setId(id);
 		return repo.save(sb);

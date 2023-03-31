@@ -26,4 +26,20 @@ export class StudyBuddyService {
   createQuestion(newQuestion:StudyBuddy):Observable<Object> {
     return this.http.post(this.url, newQuestion);
   }
+
+  getAllFavorites():Observable<StudyBuddy[]> {
+    return this.http.get<StudyBuddy[]> (this.favsURL); 
+  }
+
+  getFavorites(id:number):Observable<StudyBuddy> {
+    return this.http.get<StudyBuddy>(this.favsURL + "/"+id);
+  }
+
+  deleteFavorites(id:number):Observable<Object> {
+    return this.http.delete(this.favsURL + "/" + id);
+  }
+
+  addToFavorites(newFavorite:StudyBuddy):Observable<Object> {
+    return this.http.post(this.favsURL, newFavorite);
+  }
 }

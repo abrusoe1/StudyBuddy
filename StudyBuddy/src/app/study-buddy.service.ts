@@ -7,7 +7,8 @@ import { StudyBuddy } from './study-buddy';
   providedIn: 'root'
 })
 export class StudyBuddyService {
-  url:string = "http://localhost:8080/study-buddy";
+  url:string = "http://localhost:8080/questions";
+  favsURL:string = "http://localhost:8080/favorites"
   constructor(private http:HttpClient) { }
   
   getAllQuestions():Observable<StudyBuddy[]>{

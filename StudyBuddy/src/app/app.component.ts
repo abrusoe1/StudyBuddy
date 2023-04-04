@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { StudyBuddyService } from './study-buddy.service';
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -9,16 +8,13 @@ import { StudyBuddyService } from './study-buddy.service';
 export class AppComponent {
   title = 'StudyBuddy';
   constructor(private StudyBuddyAPI:StudyBuddyService){
-
     this.StudyBuddyAPI.getAllQuestions().subscribe(
       (result)=>{
         console.log(result);
       }
     )
-
     this.StudyBuddyAPI.getQuestion(1).subscribe(
-      (result) => { 
-
+      (result) => {
         console.log(result);
       }
     )

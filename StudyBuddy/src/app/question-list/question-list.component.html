@@ -1,6 +1,7 @@
 <h1>Questions:</h1>
-<p *ngFor="let question of questions">
-<p>{{question.question}}</p>
-<p>{{question.answer}}</p>
-</p>
-<app-adding-question (questionSave)="addQuestion($event)"></app-adding-question>
+<div *ngFor="let question of questions">
+    <p>{{question.question}}</p>
+    <p>{{question.answer}}</p>       <!--NGif to show question OR answer-->
+    <button (click)="addFavQuestions()">Add to Favorites</button> <!--Needs to read from fav-question-component.ts somehow or else be rewritten or moved-->
+</div>
+<app-adding-question (questionSave)="addQuestions($event)"></app-adding-question>

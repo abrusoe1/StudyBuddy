@@ -34,9 +34,9 @@ export class QuestionListComponent {
     );
   }
 
-    addQuestions(newQuestion:StudyBuddy){
-      this.questions.push(newQuestion);   // come back to this later
-      this.loadQuestions();
-    }
+  addQuestions(newQuestion:StudyBuddy){
+    this.questions.push(newQuestion);
+    this.loadQuestions();
+  }
 
 }

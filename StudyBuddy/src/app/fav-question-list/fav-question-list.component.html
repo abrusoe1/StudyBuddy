@@ -1,1 +1,5 @@
-<p>fav-question-list works!</p>
+<h1>Questions:</h1>
+<p *ngFor="let favQuestion of favorite_questions">
+<p>{{favQuestion.question}}</p>
+<p>{{favQuestion.answer}}</p>
+</p>

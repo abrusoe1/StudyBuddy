@@ -34,9 +34,9 @@ export class FavQuestionListComponent {
     );
   }
 
-    addFavQuestions(newQuestion:StudyBuddy){
-      this.favQuestions.push(newFavQuestion);  
-      this.loadFavQuestions();
-    }
+  addFavQuestions(newFavQuestion:StudyBuddy){
+    this.favQuestions.push(newFavQuestion);  
+    this.loadFavQuestions();
+  }
 
 }

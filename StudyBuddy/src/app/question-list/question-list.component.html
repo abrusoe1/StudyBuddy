@@ -1,1 +1,6 @@
-<p>question-list works!</p>
+<h1>Questions:</h1>
+<p *ngFor="let question of questions">
+<p>{{question.question}}</p>
+<p>{{question.answer}}</p>
+</p>
+<app-adding-question (questionSave)="addQuestion($event)"></app-adding-question>

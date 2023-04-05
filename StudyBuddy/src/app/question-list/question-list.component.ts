@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { StudyBuddy } from '../study-buddy';
 import { StudyBuddyService } from '../study-buddy.service';
 
@@ -8,8 +8,10 @@ import { StudyBuddyService } from '../study-buddy.service';
   styleUrls: ['./question-list.component.css']
 })
 export class QuestionListComponent {
+  @Output() favQuestionSave = new EventEmitter<StudyBuddy>(); 
   questions: StudyBuddy[] =[];
   newQuestion:StudyBuddy = ({} as any) as StudyBuddy; 
+  newFavQuestion:StudyBuddy = ({} as any) as StudyBuddy;
 
   constructor(private StudyBuddyAPI: StudyBuddyService){}
 
@@ -37,6 +39,16 @@ export class QuestionListComponent {
   addQuestions(newQuestion:StudyBuddy){
     this.questions.push(newQuestion);
     this.loadQuestions();
+  }
+
+  addFavQuestion(){
+    this.StudyBuddyAPI.addToFavorites(this.newFavQuestion).subscribe(
+      () =>{
+        this.favQuestionSave.emit(this.newFavQuestion);
+        this.newQuestion = ({} as any) as StudyBuddy; 
+      }
+    );
+
   }
 
 }

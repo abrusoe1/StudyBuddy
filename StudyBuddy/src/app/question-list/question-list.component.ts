@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { StudyBuddy } from '../study-buddy';
 import { StudyBuddyService } from '../study-buddy.service';
+import { StudyBuddyFav } from '../study-buddy-fav';
 
 @Component({
   selector: 'app-question-list',
@@ -11,7 +12,7 @@ export class QuestionListComponent {
   @Output() favQuestionSave = new EventEmitter<StudyBuddy>(); 
   questions: StudyBuddy[] =[];
   newQuestion:StudyBuddy = ({} as any) as StudyBuddy; 
-  newFavQuestion:StudyBuddy = ({} as any) as StudyBuddy;
+  newFavQuestion:StudyBuddyFav = ({} as any) as StudyBuddyFav;
   displayAnswersQ:boolean = false;
 
   constructor(private StudyBuddyAPI: StudyBuddyService){}
@@ -42,11 +43,16 @@ export class QuestionListComponent {
     this.loadQuestions();
   }
 
-  addFavQuestion(){
+  addFavQuestion(id:number){
+    for (let i = 0; i<this.questions.length;i++){
+      if(this.questions[i].id===id){
+        this.newFavQuestion = this.questions[i];
+      }
+    }
     this.StudyBuddyAPI.addToFavorites(this.newFavQuestion).subscribe(
       () =>{
         this.favQuestionSave.emit(this.newFavQuestion);
-        this.newQuestion = ({} as any) as StudyBuddy; 
+        this.newQuestion = ({} as any) as StudyBuddyFav; 
       }
     );
 

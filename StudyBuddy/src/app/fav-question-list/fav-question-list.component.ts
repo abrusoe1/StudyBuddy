@@ -39,4 +39,7 @@ export class FavQuestionListComponent {
     this.loadFavQuestions();
   }
 
+  // showForm():void{
+  //   this.displayForm = !this.displayForm;
+  // }
 }

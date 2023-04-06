@@ -9,6 +9,12 @@ import { QuestionListComponent } from './question-list/question-list.component';
 import { AddingQuestionComponent } from './adding-question/adding-question.component';
 import { FavQuestionListComponent } from './fav-question-list/fav-question-list.component';
 
+const appRoutes: Routes = [
+  {path:"questions", component: QuestionListComponent},
+  {path:"favorites", component: FavQuestionListComponent},
+  {path:"", redirectTo:"questions", pathMatch:"full"}
+]
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +26,7 @@ import { FavQuestionListComponent } from './fav-question-list/fav-question-list.
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    RouterModule
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,7 +1,8 @@
 <h1>Favorites:</h1>
 <div *ngFor="let favQuestion of favQuestions">
-    <p>{{favQuestion.question}}</p>
-    <p>{{favQuestion.answer}}</p>       <!--NGif to show question OR answer-->
+    <p *ngIf="!displayAnswersF">{{favQuestion.question}}</p>
+    <p *ngIf="displayAnswersF">{{favQuestion.answer}}</p>       <!--NGif to show question OR answer-->
+    <button (click)="showAnswerF()">Show Answer</button>
     <button (click)="deleteFavQuestion(favQuestion.id)">Remove from Favorites</button>
 </div>
 

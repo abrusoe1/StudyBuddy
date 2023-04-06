@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { StudyBuddy } from '../study-buddy';
 import { StudyBuddyService } from '../study-buddy.service';
+import { StudyBuddyFav } from '../study-buddy-fav';
 
 @Component({
   selector: 'app-fav-question-list',
@@ -8,8 +9,8 @@ import { StudyBuddyService } from '../study-buddy.service';
   styleUrls: ['./fav-question-list.component.css']
 })
 export class FavQuestionListComponent {
-  favQuestions: StudyBuddy[] =[];
-  newFavQuestion:StudyBuddy = ({} as any) as StudyBuddy; 
+  favQuestions: StudyBuddyFav[] =[];
+  newFavQuestion:StudyBuddyFav = ({} as any) as StudyBuddyFav; 
   displayAnswersF:boolean = false;
 
   constructor(private StudyBuddyAPI: StudyBuddyService){}
@@ -22,6 +23,7 @@ export class FavQuestionListComponent {
     this.StudyBuddyAPI.getAllFavorites().subscribe(
       (result) => {
         this.favQuestions = result;
+        console.log(result);
       }
     )
   }
@@ -35,7 +37,7 @@ export class FavQuestionListComponent {
     );
   }
 
-  addFavQuestions(newFavQuestion:StudyBuddy){
+  addFavQuestions(newFavQuestion:StudyBuddyFav){
     this.favQuestions.push(newFavQuestion);  
     this.loadFavQuestions();
   }

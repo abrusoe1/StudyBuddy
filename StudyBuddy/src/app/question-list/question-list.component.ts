@@ -12,6 +12,7 @@ export class QuestionListComponent {
   questions: StudyBuddy[] =[];
   newQuestion:StudyBuddy = ({} as any) as StudyBuddy; 
   newFavQuestion:StudyBuddy = ({} as any) as StudyBuddy;
+  displayAnswersQ:boolean = false;
 
   constructor(private StudyBuddyAPI: StudyBuddyService){}
 
@@ -51,7 +52,7 @@ export class QuestionListComponent {
 
   }
   
-  // showForm():void{
-  //   this.displayForm = !this.displayForm;
-  // }
+  showAnswerQ():void{
+    this.displayAnswersQ = !this.displayAnswersQ;
+  }
 }

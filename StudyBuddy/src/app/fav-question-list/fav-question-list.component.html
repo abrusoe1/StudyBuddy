@@ -1,6 +1,12 @@
-<h1>Favorite Questions:</h1>
+<h1>Favorites:</h1>
 <div *ngFor="let favQuestion of favQuestions">
     <p>{{favQuestion.question}}</p>
     <p>{{favQuestion.answer}}</p>       <!--NGif to show question OR answer-->
-    <button (click)="deleteFavQuestion(favQuestion.id)">Remove from Favorites</button> <!--Figure out in parens later-->
+    <button (click)="deleteFavQuestion(favQuestion.id)">Remove from Favorites</button>
 </div>
+
+<div>
+    <a [routerLink]="['/questions']">Show Questions</a>
+</div>
+
+<!-- <router-outlet></router-outlet> -->

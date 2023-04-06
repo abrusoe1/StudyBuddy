@@ -10,6 +10,7 @@ import { StudyBuddyService } from '../study-buddy.service';
 export class FavQuestionListComponent {
   favQuestions: StudyBuddy[] =[];
   newFavQuestion:StudyBuddy = ({} as any) as StudyBuddy; 
+  displayAnswersF:boolean = false;
 
   constructor(private StudyBuddyAPI: StudyBuddyService){}
 
@@ -39,7 +40,7 @@ export class FavQuestionListComponent {
     this.loadFavQuestions();
   }
 
-  // showForm():void{
-  //   this.displayForm = !this.displayForm;
-  // }
+  showAnswerF():void{
+    this.displayAnswersF = !this.displayAnswersF;
+  }
 }

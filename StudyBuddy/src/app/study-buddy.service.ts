@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { StudyBuddy } from './study-buddy';
+import { StudyBuddyFav } from './study-buddy-fav';
 
 @Injectable({
   providedIn: 'root'
@@ -27,19 +28,21 @@ export class StudyBuddyService {
     return this.http.post(this.url, newQuestion);
   }
 
-  getAllFavorites():Observable<StudyBuddy[]> {
-    return this.http.get<StudyBuddy[]> (this.favsURL); 
+  getAllFavorites():Observable<StudyBuddyFav[]> {
+    return this.http.get<StudyBuddyFav[]> (this.favsURL); 
   }
 
-  getFavorites(id:number):Observable<StudyBuddy> {
-    return this.http.get<StudyBuddy>(this.favsURL + "/"+id);
+  getFavorites(id:number):Observable<StudyBuddyFav> {
+    return this.http.get<StudyBuddyFav>(this.favsURL + "/"+id);
   }
 
-  deleteFavorites(id:number):Observable<Object> {
-    return this.http.delete(this.favsURL + "/" + id);
+  deleteFavorites(id:number):Observable<void> {
+    console.log(id);
+    return this.http.delete<void>(this.favsURL + "/" + id);
+    
   }
 
-  addToFavorites(newFavorite:StudyBuddy):Observable<Object> {
+  addToFavorites(newFavorite:StudyBuddyFav):Observable<Object> {
     return this.http.post(this.favsURL, newFavorite);
   }
 }

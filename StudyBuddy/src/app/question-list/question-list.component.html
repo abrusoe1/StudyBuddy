@@ -2,7 +2,7 @@
 <div *ngFor="let question of questions">
     <p>{{question.question}}</p>
     <p>{{question.answer}}</p>       <!--NGif to show question OR answer-->
-    <button (click)="addFavQuestion()">Add to Favorites</button>
+    <button (click)="addFavQuestion(question.id)">Add to Favorites</button>
 </div>
 <app-adding-question (questionSave)="addQuestions($event)"></app-adding-question>
 

@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class FavoriteAPIController {
 
 	@Autowired
-	private StudyBuddyRepository repository;
+	private StudyBuddyFavRepository repository;
 	
 //	@RequestMapping("/")
 //	public String home() {
@@ -33,21 +33,21 @@ public class FavoriteAPIController {
 
 	// C(R)UD -- Read All
 	@GetMapping("/favorites")
-	public List<StudyBuddy> readAll() {
+	public List<StudyBuddyFav> readAll() {
 		return repository.findAll();
 	}
 	
 	
 	//Read One
 	@GetMapping("/favorites/{id}")
-	public StudyBuddy readOne(@PathVariable("id")Long id) {
+	public StudyBuddyFav readOne(@PathVariable("id")Long id) {
 		return repository.findById(id).orElseThrow(()-> new FavoriteNotFoundException(id));
 	}
 	
 	//Create
 	@PostMapping("/favorites")
 	@ResponseStatus(HttpStatus.CREATED)
-	public StudyBuddy create(@RequestBody StudyBuddy sb) {
+	public StudyBuddyFav create(@RequestBody StudyBuddyFav sb) {
 		repository.save(sb);
 		return sb;
 	}
@@ -55,13 +55,13 @@ public class FavoriteAPIController {
 	//delete
 	@DeleteMapping("/favorites{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void delete (@PathVariable("ID")Long id) {
+	public void delete (@PathVariable("id")Long id) {
 		repository.deleteById(id);
 		}
 	
 	//update
 	@PutMapping("/favorites/{id}")
-	public StudyBuddy update(@PathVariable("id") Long id, @RequestBody StudyBuddy sb) {
+	public StudyBuddyFav update(@PathVariable("id") Long id, @RequestBody StudyBuddyFav sb) {
 		sb.setId(id);
 		return repository.save(sb);
 	}

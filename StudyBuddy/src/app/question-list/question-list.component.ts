@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { StudyBuddy } from '../study-buddy';
+import { StudyBuddy, StudyBuddyJunior } from '../study-buddy';
 import { StudyBuddyService } from '../study-buddy.service';
 import { StudyBuddyFav } from '../study-buddy-fav';
 
@@ -11,11 +11,14 @@ import { StudyBuddyFav } from '../study-buddy-fav';
 export class QuestionListComponent {
   @Output() favQuestionSave = new EventEmitter<StudyBuddy>(); 
   questions: StudyBuddy[] =[];
+  studyBuddyJrArray:StudyBuddyJunior[]=[];
   newQuestion:StudyBuddy = ({} as any) as StudyBuddy; 
   newFavQuestion:StudyBuddyFav = ({} as any) as StudyBuddyFav;
   displayAnswersQ:boolean = false;
 
-  constructor(private StudyBuddyAPI: StudyBuddyService){}
+  constructor(private StudyBuddyAPI: StudyBuddyService){
+    this.loadQuestions();
+  }
 
   ngOnInit(){
     this.loadQuestions();
@@ -25,7 +28,15 @@ export class QuestionListComponent {
     this.StudyBuddyAPI.getAllQuestions().subscribe(
       (result) => {
         this.questions = result;
+        this.studyBuddyJrArray = [];
+        for (let i=0; i<result.length;i++){
+          let sbj = new StudyBuddyJunior(result[i]);
+          this.studyBuddyJrArray.push(sbj);
+        }
+        console.log(this.studyBuddyJrArray);
+
       }
+
     )
   }
 
@@ -58,7 +69,7 @@ export class QuestionListComponent {
 
   }
   
-  showAnswerQ():void{
-    this.displayAnswersQ = !this.displayAnswersQ;
+  showAnswerQ(i:number):void{  
+    this.studyBuddyJrArray[i].display = !this.studyBuddyJrArray[i].display;
   }
 }

@@ -1,9 +1,9 @@
 <h1>Questions:</h1>
-<div *ngFor="let question of questions">
-    <p *ngIf="!displayAnswersQ">{{question.question}}</p>
-    <p *ngIf="displayAnswersQ">{{question.answer}}</p>       <!--NGif to show question OR answer-->
-    <button (click)="showAnswerQ()">Show Answer</button>
-    <button (click)="addFavQuestion(question.id)">Add to Favorites</button>
+<div *ngFor="let question of studyBuddyJrArray; index as i">
+    <p *ngIf="!question.display">{{question.studyBuddy.question}}</p>
+    <p *ngIf="question.display">{{question.studyBuddy.answer}}</p>       <!--NGif to show question OR answer-->
+    <button (click)="showAnswerQ(i)">Show Answer</button>
+    <button (click)="addFavQuestion(question.studyBuddy.id)">Add to Favorites</button>
 </div>
 <app-adding-question (questionSave)="addQuestions($event)"></app-adding-question>
 

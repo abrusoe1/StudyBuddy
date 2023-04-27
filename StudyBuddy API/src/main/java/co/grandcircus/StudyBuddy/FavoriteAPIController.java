@@ -53,7 +53,7 @@ public class FavoriteAPIController {
 	}
 	
 	//delete
-	@DeleteMapping("/favorites{id}")
+	@DeleteMapping("/favorites/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void delete (@PathVariable("id")Long id) {
 		repository.deleteById(id);
